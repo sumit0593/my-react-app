@@ -1,4 +1,3 @@
-// File: GenerateTable.jsx
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
 
@@ -49,7 +48,6 @@ export default function GenerateTable() {
       return;
     }
 
-    // scale floats so grand becomes 100
     const factor = 100 / grand;
     let scaled = withTotals.map((r) => {
       const m = r.morning * factor;
@@ -57,7 +55,6 @@ export default function GenerateTable() {
       return { ...r, morning: m, evening: e, total: m + e };
     });
 
-    // --- NEW: convert to thousandths to guarantee exact 3-decimal sum to 100.000 ---
     const scaledTh = scaled.map((r) => ({
       day: r.day,
       morningTh: Math.round(r.morning * 1000),
@@ -211,7 +208,6 @@ export default function GenerateTable() {
             </table>
           </div>
 
-          {/* Sidebar stats / controls */}
           <aside className="bg-white rounded-xl shadow p-4 flex flex-col gap-4">
             <div>
               <h3 className="text-sm text-gray-500">Grand Total</h3>
